@@ -12,6 +12,8 @@ import {
   getVisiblePrograms,
 } from "./index";
 import { isProgramVisible } from "./visibility";
+import { evaluateProgramFinder } from "@/lib/finder";
+import { getAcademicYear } from "./index";
 
 const FORBIDDEN = /\b(TBD|placeholder|pending|mock|configuration|lorem)\b/i;
 
@@ -100,5 +102,60 @@ describe("graceful omission", () => {
     for (const program of getVisiblePrograms()) {
       expect(JSON.stringify(program)).not.toMatch(FORBIDDEN);
     }
+  });
+});
+
+describe("2026–27 placement table", () => {
+  const year = getAcademicYear("ay-2026")!;
+  const place = (dateOfBirth: string) =>
+    evaluateProgramFinder({
+      dateOfBirth,
+      today: { year: 2026, month: 3, day: 1 },
+      academicYear: year,
+      offerings: getFinderOfferings(year.id),
+      elementaryActive: false,
+      elementaryGrades: [],
+    });
+
+  it("uses the approved 1 September 2026 cutoff", () => {
+    expect(year.eligibilityCutoffDate).toBe("2026-09-01");
+    expect(place("2023-01-15").cutoffLine).toBe("Age on 1 Sep 2026");
+  });
+
+  it.each([
+    ["2024-09-01", "prog-early-learners"],
+    ["2023-09-02", "prog-early-learners"],
+    ["2023-09-01", "prog-preschool"],
+    ["2022-09-02", "prog-preschool"],
+    ["2022-09-01", "prog-pre-kindergarten"],
+    ["2021-09-02", "prog-pre-kindergarten"],
+    ["2021-09-01", "prog-kindergarten"],
+    ["2020-09-02", "prog-kindergarten"],
+  ])("places a child born %s in %s", (dob, programId) => {
+    const result = place(dob);
+    expect(result.kind).toBe("match");
+    expect(result.matchedProgramId).toBe(programId);
+  });
+
+  it("marks children born after 1 September 2024 as not yet eligible", () => {
+    expect(place("2024-09-02").kind).toBe("below-minimum");
+  });
+
+  it("directs children born on or before 1 September 2020 to admissions", () => {
+    expect(place("2020-09-01").kind).toBe("beyond");
+  });
+
+  it("still defers to admissions for 2027–28, which has no approved cutoff", () => {
+    const next = getAcademicYear("ay-2027")!;
+    expect(next.eligibilityCutoffDate).toBeNull();
+    const result = evaluateProgramFinder({
+      dateOfBirth: "2023-01-15",
+      today: { year: 2026, month: 3, day: 1 },
+      academicYear: next,
+      offerings: getFinderOfferings(next.id),
+      elementaryActive: false,
+      elementaryGrades: [],
+    });
+    expect(result.kind).toBe("no-cutoff");
   });
 });
