@@ -84,7 +84,7 @@ export function MobileNav({ items, shellId }: MobileNavProps) {
         tabIndex={-1}
       >
         <div className="flex items-center justify-between gap-3">
-          <span id={titleId} className="sub-heading font-serif font-semibold text-green">
+          <span id={titleId} className="sub-heading text-green">
             Menu
           </span>
           <button ref={closeRef} type="button" className="burger" onClick={close}>
