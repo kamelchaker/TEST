@@ -10,5 +10,6 @@ export class NoopCrmAdapter implements CrmAdapter {
 
 export class NoopEmailAdapter implements EmailAdapter {
   readonly name = "noop";
+  constructor(readonly inbox = "") {}
   async notifyAdmissions(_lead: Lead) {}
 }

@@ -207,6 +207,8 @@ export interface SiteSettings {
   parentOrganization: { name: string; url: string | null } | null;
   /** Endorsement line from the brand system, shown in the footer. */
   endorsementLine: string | null;
+  /** Inbox that receives tour and information requests. */
+  admissionsEmail: string;
   tagline: string;
   descriptor: string;
   strapline: string;

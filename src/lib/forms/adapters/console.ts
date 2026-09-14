@@ -28,7 +28,8 @@ export class ConsoleCrmAdapter implements CrmAdapter {
 
 export class ConsoleEmailAdapter implements EmailAdapter {
   readonly name = "console";
+  constructor(readonly inbox: string) {}
   async notifyAdmissions(lead: Lead) {
-    console.info("[email:console] admissions notification", redact(lead));
+    console.info("[email:console] admissions notification", { to: this.inbox, ...redact(lead) });
   }
 }

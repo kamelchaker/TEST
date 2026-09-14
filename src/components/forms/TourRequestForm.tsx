@@ -18,6 +18,8 @@ interface TourRequestFormProps {
   token: string;
   programOptions: ProgramOption[];
   consentStatement: string;
+  /** Public admissions address, offered as an alternative to the form. */
+  admissionsEmail: string;
 }
 
 const IDS = {
@@ -31,7 +33,7 @@ const IDS = {
   consent: "t-consent",
 };
 
-export function TourRequestForm({ token: initialToken, programOptions, consentStatement }: TourRequestFormProps) {
+export function TourRequestForm({ token: initialToken, programOptions, consentStatement, admissionsEmail }: TourRequestFormProps) {
   const [state, formAction, pending] = useActionState(submitTourRequest, initialFormState);
   const { token, formKey, showSuccess, submitAnother, resetting } = useSubmitAnother(state, initialToken);
   const summaryRef = useFocusOnError(state);
@@ -141,7 +143,8 @@ export function TourRequestForm({ token: initialToken, programOptions, consentSt
           {pending ? "Sending…" : "Schedule a Tour"}
         </Button>
         <p className="meta-text">
-          Prefer to write first? <Link href="/request-information">Request Information</Link>
+          Prefer to write first? <Link href="/request-information">Request Information</Link> or email{" "}
+          <a href={`mailto:${admissionsEmail}`}>{admissionsEmail}</a>
         </p>
       </div>
       <p className="meta-text border-t border-line pt-4">

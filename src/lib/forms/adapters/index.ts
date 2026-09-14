@@ -1,5 +1,6 @@
 import { ConsoleCrmAdapter, ConsoleEmailAdapter } from "./console";
 import { NoopCrmAdapter, NoopEmailAdapter } from "./noop";
+import { siteSettings } from "@/content/site";
 import type { CrmAdapter, EmailAdapter } from "./types";
 
 export type { CrmAdapter, EmailAdapter, Lead, LeadConsent, LeadKind } from "./types";
@@ -14,12 +15,16 @@ export interface FormAdapters {
  * no credentials. A live CRM or mail provider is added by implementing the
  * interfaces in ./types and registering it here under a new env value.
  */
-export function createAdapters(env: NodeJS.ProcessEnv = process.env): FormAdapters {
+export type AdapterEnv = Record<string, string | undefined>;
+
+export function createAdapters(env: AdapterEnv = process.env): FormAdapters {
   const crmChoice = env.CRM_ADAPTER ?? "console";
   const emailChoice = env.EMAIL_ADAPTER ?? "console";
+  // Notifications go to the admissions inbox; ADMISSIONS_INBOX overrides it per environment.
+  const inbox = env.ADMISSIONS_INBOX || siteSettings.admissionsEmail;
 
   const crm: CrmAdapter = crmChoice === "noop" ? new NoopCrmAdapter() : new ConsoleCrmAdapter();
-  const email: EmailAdapter = emailChoice === "noop" ? new NoopEmailAdapter() : new ConsoleEmailAdapter();
+  const email: EmailAdapter = emailChoice === "noop" ? new NoopEmailAdapter(inbox) : new ConsoleEmailAdapter(inbox);
   return { crm, email };
 }
 

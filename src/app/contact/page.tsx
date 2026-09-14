@@ -49,7 +49,7 @@ export default function ContactPage() {
           ) : null}
           {campus?.email ? (
             <p className="body-text">
-              <a href={`mailto:${campus.email}`}>{campus.email}</a>
+              Email <a href={`mailto:${campus.email}`}>{campus.email}</a>
             </p>
           ) : null}
           <div className="btn-row">

@@ -5,6 +5,7 @@ export const siteSettings: SiteSettings = {
   shortName: "Midad",
   parentOrganization: { name: "Al-Baseerah Academy", url: null },
   endorsementLine: "Member of Al-Baseerah Network",
+  admissionsEmail: "info@midadacademy.org",
   tagline: "Nurturing hearts, building bright futures",
   descriptor: "Early Childhood & Elementary Education",
   strapline: "Early Childhood & Elementary · Nurturing hearts",

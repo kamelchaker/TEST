@@ -45,6 +45,7 @@ export default function ScheduleTourPage() {
           token={issueFormToken()}
           programOptions={programOptions}
           consentStatement={settings.consentStatement}
+          admissionsEmail={settings.admissionsEmail}
         />
       </Section>
     </>

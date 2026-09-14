@@ -31,5 +31,7 @@ export interface CrmAdapter {
 
 export interface EmailAdapter {
   readonly name: string;
+  /** Address that receives the notification. */
+  readonly inbox: string;
   notifyAdmissions(lead: Lead): Promise<void>;
 }

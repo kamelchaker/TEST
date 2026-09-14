@@ -13,6 +13,8 @@ interface InformationRequestFormProps {
   token: string;
   programOptions: ProgramOption[];
   consentStatement: string;
+  /** Public admissions address, offered as an alternative to the form. */
+  admissionsEmail: string;
 }
 
 const IDS = {
@@ -24,7 +26,7 @@ const IDS = {
   consent: "i-consent",
 };
 
-export function InformationRequestForm({ token: initialToken, programOptions, consentStatement }: InformationRequestFormProps) {
+export function InformationRequestForm({ token: initialToken, programOptions, consentStatement, admissionsEmail }: InformationRequestFormProps) {
   const [state, formAction, pending] = useActionState(submitInformationRequest, initialFormState);
   const { token, formKey, showSuccess, submitAnother, resetting } = useSubmitAnother(state, initialToken);
   const summaryRef = useFocusOnError(state);
@@ -96,6 +98,10 @@ export function InformationRequestForm({ token: initialToken, programOptions, co
       <Button type="submit" variant="outline" className="self-start" disabled={pending}>
         {pending ? "Sending…" : "Request Information"}
       </Button>
+      <p className="meta-text">
+        Prefer email? Write to <a href={`mailto:${admissionsEmail}`}>{admissionsEmail}</a> and our admissions team
+        will reply.
+      </p>
       <div className="panel-soft p-4 flex flex-wrap gap-3 items-center justify-between">
         <p className="small-text">Ready to see the school?</p>
         <ButtonLink href="/schedule-a-tour">Schedule a Tour</ButtonLink>

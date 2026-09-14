@@ -31,6 +31,7 @@ export default function RequestInformationPage() {
           token={issueFormToken()}
           programOptions={programOptions}
           consentStatement={settings.consentStatement}
+          admissionsEmail={settings.admissionsEmail}
         />
       </Section>
     </>
