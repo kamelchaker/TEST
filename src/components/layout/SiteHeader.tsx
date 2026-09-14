@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="wrap flex items-center justify-between gap-4 py-3">
         <Link href="/" className="flex items-center min-h-11 no-underline" aria-label={`${settings.name} home`}>
-          <HorizontalLockup markSize={40} surface="#fff" descriptor="responsive" className="header-lockup" />
+          <HorizontalLockup markSize={40} surface="#fff" descriptor="responsive" endorsement className="header-lockup" />
         </Link>
         <nav aria-label="Primary" className="hidden lg:block">
           <NavLinks items={settings.navigation} variant="header" />

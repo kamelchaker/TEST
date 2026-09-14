@@ -18,6 +18,7 @@ export const DESCRIPTOR_FULL = ["Early Childhood & Elementary", "Nurturing heart
 export const DESCRIPTOR_SHORT = "Early Childhood & Elementary";
 export const DESCRIPTOR_FULL_LINE = `${DESCRIPTOR_FULL[0]} · ${DESCRIPTOR_FULL[1]}`;
 export const ARABIC_NAME = "مداد";
+export const ENDORSEMENT = "Member of Al-Baseerah Network";
 
 interface LockupProps {
   /** Mark height in CSS pixels. */
@@ -29,11 +30,13 @@ interface LockupProps {
    * pick one per breakpoint (the site header's case).
    */
   descriptor?: "full" | "short" | "none" | "responsive";
+  /** Adds the endorsement line beneath the descriptor, with its short rule. */
+  endorsement?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export function HorizontalLockup({ markSize, surface, descriptor = "full", className, style }: LockupProps) {
+export function HorizontalLockup({ markSize, surface, descriptor = "full", endorsement, className, style }: LockupProps) {
   return (
     <span className={cx("lockup lockup-horizontal", className)} style={style}>
       <MidadMark size={markSize} surface={surface} className="lockup-mark" />
@@ -52,6 +55,12 @@ export function HorizontalLockup({ markSize, surface, descriptor = "full", class
                 {descriptor === "short" ? DESCRIPTOR_SHORT : DESCRIPTOR_FULL_LINE}
               </span>
             )}
+            {endorsement ? (
+              <span className="lockup-endorsement">
+                <span className="lockup-endorsement-rule" aria-hidden="true" />
+                {ENDORSEMENT}
+              </span>
+            ) : null}
           </>
         )}
       </span>

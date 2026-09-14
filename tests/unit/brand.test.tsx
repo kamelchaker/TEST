@@ -31,9 +31,10 @@ describe("MidadMark", () => {
 
 describe("lockups", () => {
   it("renders the horizontal lockup with wordmark, rule and descriptor", () => {
-    render(<HorizontalLockup markSize={40} surface="#fff" />);
+    render(<HorizontalLockup markSize={40} surface="#fff" endorsement />);
     expect(screen.getByText("Midad Academy")).toBeInTheDocument();
     expect(screen.getByText("Early Childhood & Elementary · Nurturing hearts")).toBeInTheDocument();
+    expect(screen.getByText("Member of Al-Baseerah Network")).toBeInTheDocument();
   });
 
   it("marks the Arabic name with lang and direction in the stacked lockup", () => {

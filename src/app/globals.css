@@ -19,6 +19,7 @@
   --color-stone: #f2efe8;
   --color-line: rgba(32, 33, 31, 0.12);
   --color-navy: #15294a;
+  --color-neutral-ink: #5b615c;
   --color-on-green-muted: #cdd9cf;
   --color-on-green-kicker: #e4d3b8;
 
@@ -390,6 +391,9 @@
     --lockup-wordmark: 17px;
     --lockup-descriptor: 10px;
     --lockup-rule-gap: 3px;
+    --lockup-endorsement: 9px;
+    --lockup-endorsement-gap: 4px;
+    --lockup-endorsement-rule: 20px;
     display: inline-flex;
     text-decoration: none;
     color: var(--color-navy);
@@ -417,6 +421,21 @@
     color: var(--color-terra);
     white-space: nowrap;
   }
+  .lockup-endorsement {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--lockup-endorsement-gap);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--lockup-endorsement);
+    line-height: 1.2;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-neutral-ink);
+    white-space: nowrap;
+  }
+  .lockup-endorsement-rule { display: block; width: var(--lockup-endorsement-rule); height: 1px; background: rgba(32, 33, 31, 0.25); flex: none; }
   .lockup-stacked { flex-direction: column; align-items: center; text-align: center; gap: 0; }
   .lockup-stacked .lockup-mark { margin-bottom: calc(var(--lockup-wordmark) * 0.55); }
   .lockup-stacked .lockup-arabic {
@@ -442,10 +461,12 @@
   /* The header lockup keeps the approved 17px / 10px brand sizes and hides
      the descriptor below 768px, matching the approved header. */
   .header-lockup .lockup-rule,
-  .header-lockup .lockup-descriptor { display: none; }
+  .header-lockup .lockup-descriptor,
+  .header-lockup .lockup-endorsement { display: none; }
   @media (min-width: 768px) {
     .header-lockup .lockup-rule,
     .header-lockup .lockup-descriptor-full { display: block; }
+    .header-lockup .lockup-endorsement { display: flex; }
   }
   /* With the full navigation visible, the short form keeps the row on one line. */
   @media (min-width: 1024px) and (max-width: 1279px) {
