@@ -28,7 +28,7 @@ import { buildMetadata } from "@/lib/seo";
 import { cx } from "@/lib/cx";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Al-Baseerah Academy | Early Childhood & Elementary Education",
+  title: "Midad Academy | Early Childhood & Elementary Education",
   description:
     "Nurturing, engaging education for children ages 2–6 — strong academics and Islamic learning together, building skills, character, and confidence for a bright future.",
   path: "/",
@@ -156,7 +156,7 @@ export default function HomePage() {
 
       <Section innerClassName="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
-          <Kicker>The path through Al-Baseerah</Kicker>
+          <Kicker>The path through Midad</Kicker>
           <SectionHeading>From first words to a confident reader</SectionHeading>
         </div>
         <ol className="steps steps-stacked">

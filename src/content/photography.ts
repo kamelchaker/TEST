@@ -5,9 +5,9 @@ import type { ImageKey, Photo } from "./types";
  * behind a key and the same crop, ratio and layout render the new image.
  *
  * The scene images under /images/temporary are temporary visual assets that
- * preserve the approved design. They are not photographs of Al-Baseerah
- * Academy and are never described as such. The two logo files are the
- * school's own artwork.
+ * preserve the approved design. They are not photographs of Midad Academy
+ * and are never described as such. The two logo files are the crest of
+ * Al-Baseerah Academy, of which Midad Academy is part.
  */
 const T = "/images/temporary";
 
@@ -99,6 +99,11 @@ const positions: Record<ImageKey, { source: SourceKey; position?: string }> = {
 };
 
 /** Returns the photo for a design position, or null when none is mapped. */
+export const logos = {
+  crest: { src: "/images/logocrest.png", width: 512, height: 512, alt: "Al-Baseerah Academy" },
+  full: { src: "/images/logofull.png", width: 600, height: 691, alt: "Al-Baseerah Academy" },
+} as const;
+
 export function getPhoto(key: ImageKey | null | undefined): Photo | null {
   if (!key) return null;
   const entry = positions[key];
@@ -113,8 +118,3 @@ export function getPhoto(key: ImageKey | null | undefined): Photo | null {
     temporary: true,
   };
 }
-
-export const logos = {
-  crest: { src: "/images/logocrest.png", width: 512, height: 512, alt: "Al-Baseerah Academy" },
-  full: { src: "/images/logofull.png", width: 600, height: 691, alt: "Al-Baseerah Academy" },
-} as const;

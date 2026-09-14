@@ -48,7 +48,7 @@ export const editorialPages: EditorialPage[] = [
   {
     slug: "families",
     kicker: "Families",
-    heading: "Everyday life at Al-Baseerah",
+    heading: "Everyday life at Midad",
     lede: "Meals, rest, arrival and dismissal, supplies and how teachers keep in touch with you.",
     imageKey: "familiesHero",
     sections: [
@@ -65,20 +65,20 @@ export const editorialPages: EditorialPage[] = [
     seo: {
       title: "Families",
       description:
-        "Everyday life at Al-Baseerah Academy: meals, rest, arrival and dismissal, supplies and how teachers keep in touch with families.",
+        "Everyday life at Midad Academy: meals, rest, arrival and dismissal, supplies and how teachers keep in touch with families.",
     },
   },
   {
     slug: "about",
     kicker: "About",
-    heading: "Al-Baseerah Academy",
+    heading: "Midad Academy",
     lede:
       "An Early Childhood and Elementary school where strong academics and Islamic education are integrated throughout the day.",
     imageKey: "aboutHero",
     sections: [
       {
         title: "Who we are",
-        body: "Al-Baseerah Academy is an Early Childhood and Elementary school. Children currently enroll from age two through Kindergarten, with Extended Learning at either end of the day. Kindergarten is a full academic program, not an extension of Pre-Kindergarten.",
+        body: "Midad Academy is an Early Childhood and Elementary school. Children currently enroll from age two through Kindergarten, with Extended Learning at either end of the day. Kindergarten is a full academic program, not an extension of Pre-Kindergarten.",
       },
       {
         title: "Where we are going",
@@ -93,7 +93,7 @@ export const editorialPages: EditorialPage[] = [
     seo: {
       title: "About",
       description:
-        "Al-Baseerah Academy is an Early Childhood and Elementary school where strong academics and Islamic education are integrated throughout the day.",
+        "Midad Academy is an Early Childhood and Elementary school where strong academics and Islamic education are integrated throughout the day.",
     },
   },
 ];

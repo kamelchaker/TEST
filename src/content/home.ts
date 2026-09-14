@@ -53,7 +53,7 @@ export const pathway: PathwayStep[] = [
   {
     name: "Beyond Kindergarten",
     ages: "Looking ahead",
-    gain: "Al-Baseerah is built to grow with its children. Families planning past Kindergarten are welcome to talk with our admissions team.",
+    gain: "Midad is built to grow with its children. Families planning past Kindergarten are welcome to talk with our admissions team.",
     current: false,
   },
 ];

@@ -35,7 +35,7 @@ export default function AdmissionsPage() {
           <PageHeading>Admissions</PageHeading>
           <SubHeading as="h2">Start with a visit.</SubHeading>
           <Lede>
-            The best way to understand Al-Baseerah is to visit: explore the learning environment and learn
+            The best way to understand Midad is to visit: explore the learning environment and learn
             more about the program from our team. Everything else follows from there.
           </Lede>
           <div className="btn-row">

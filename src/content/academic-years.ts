@@ -1,7 +1,7 @@
 import type { AcademicYear } from "./types";
 
 /**
- * Eligibility cutoff dates are set only once Al-Baseerah approves them. For a
+ * Eligibility cutoff dates are set only once Midad approves them. For a
  * year with none set, the Program Finder does not calculate and instead
  * directs families to the admissions team.
  *

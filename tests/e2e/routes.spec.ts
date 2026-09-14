@@ -7,7 +7,7 @@ for (const route of ROUTES) {
     expect(response?.status()).toBe(200);
 
     await expect(page).not.toHaveTitle(/Bundled Page/);
-    await expect(page).toHaveTitle(/Al-Baseerah Academy/);
+    await expect(page).toHaveTitle(/Midad Academy/);
 
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("header")).toHaveCount(1);

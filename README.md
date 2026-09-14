@@ -1,6 +1,6 @@
-# Al-Baseerah Academy — website
+# Midad Academy — website
 
-Production implementation of the approved Al-Baseerah Academy website design, built with Next.js (App Router), React, TypeScript (strict) and Tailwind CSS.
+Production implementation of the approved Midad Academy website design, built with Next.js (App Router), React, TypeScript (strict) and Tailwind CSS.
 
 ## Getting started
 
@@ -60,7 +60,7 @@ All content lives in `src/content` and is read only through `src/lib/cms`. Value
 - **Tuition** — `src/content/tuition.ts`; figures appear only when `approved` is true and rows exist.
 - **Campus contact details** — `src/content/campuses.ts`; address, phone and email render on `/contact` and in structured data once supplied.
 - **Faculty** — `src/content/faculty.ts`; the type exists and the resolver returns approved profiles, but no section is rendered until profiles are supplied.
-- **Photography** — `src/content/photography.ts` maps each design position (for example `preschoolHero`, `curriculumQuran`) to a file, size and objective alt text. Replace the file behind a key to change the image everywhere it is used without touching layouts. Files under `public/images/temporary` are stand-in visuals, not photographs of Al-Baseerah Academy.
+- **Photography** — `src/content/photography.ts` maps each design position (for example `preschoolHero`, `curriculumQuran`) to a file, size and objective alt text. Replace the file behind a key to change the image everywhere it is used without touching layouts. Files under `public/images/temporary` are stand-in visuals, not photographs of Midad Academy.
 
 ## Program Finder
 

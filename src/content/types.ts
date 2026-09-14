@@ -1,5 +1,5 @@
 /**
- * Content model for the Al-Baseerah Academy website.
+ * Content model for the Midad Academy website.
  *
  * These types describe the records a CMS (or the local content files) supply.
  * Values that the school has not yet approved are represented as `null` or an
@@ -203,6 +203,8 @@ export interface FooterColumn {
 export interface SiteSettings {
   name: string;
   shortName: string;
+  /** Organisation the school belongs to, shown in the footer and structured data. */
+  parentOrganization: { name: string; url: string | null } | null;
   tagline: string;
   descriptor: string;
   strapline: string;
@@ -226,7 +228,7 @@ export interface Photo {
   /** CSS object-position, e.g. "62% 45%". */
   position?: string;
   /**
-   * Temporary visual assets stand in for Al-Baseerah photography until real
+   * Temporary visual assets stand in for Midad photography until real
    * images are supplied. They are never described as documentary photographs.
    */
   temporary: boolean;

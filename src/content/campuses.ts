@@ -4,7 +4,7 @@ import type { Campus } from "./types";
 export const campuses: Campus[] = [
   {
     id: "campus-main",
-    name: "Al-Baseerah Academy",
+    name: "Midad Academy",
     addressLines: [],
     phone: null,
     email: null,

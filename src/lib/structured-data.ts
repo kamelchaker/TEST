@@ -23,6 +23,14 @@ export function organizationJsonLd(): Record<string, unknown> {
   }
   if (campus?.phone) data.telephone = campus.phone;
   if (campus?.email) data.email = campus.email;
+  if (settings.parentOrganization) {
+    const parent: Record<string, unknown> = {
+      "@type": "EducationalOrganization",
+      name: settings.parentOrganization.name,
+    };
+    if (settings.parentOrganization.url) parent.url = settings.parentOrganization.url;
+    data.parentOrganization = parent;
+  }
   return data;
 }
 

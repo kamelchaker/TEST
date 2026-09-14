@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = buildMetadata({
   title: "Schedule a Tour",
   description:
-    "Visit Al-Baseerah, explore the learning environment, and learn more about the program from our team. Time for your questions is included.",
+    "Visit Midad, explore the learning environment, and learn more about the program from our team. Time for your questions is included.",
   path: "/schedule-a-tour",
 });
 
@@ -34,7 +34,7 @@ export default function ScheduleTourPage() {
           <Kicker>Visit us</Kicker>
           <PageHeading>Schedule a Tour</PageHeading>
           <Lede>
-            Visit Al-Baseerah, explore the learning environment, and learn more about the program from our
+            Visit Midad, explore the learning environment, and learn more about the program from our
             team. Time for your questions is included.
           </Lede>
         </div>

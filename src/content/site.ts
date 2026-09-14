@@ -1,8 +1,9 @@
 import type { SiteSettings } from "./types";
 
 export const siteSettings: SiteSettings = {
-  name: "Al-Baseerah Academy",
-  shortName: "Al-Baseerah",
+  name: "Midad Academy",
+  shortName: "Midad",
+  parentOrganization: { name: "Al-Baseerah Academy", url: null },
   tagline: "Nurturing hearts, building bright futures",
   descriptor: "Early Childhood & Elementary Education",
   strapline: "Early Childhood & Elementary · Nurturing hearts",
@@ -61,5 +62,5 @@ export const siteSettings: SiteSettings = {
     },
   ],
   consentStatement:
-    "I agree that Al-Baseerah Academy may contact me about my enquiry.",
+    "I agree that Midad Academy may contact me about my enquiry.",
 };

@@ -23,7 +23,7 @@ test.describe("Schedule a Tour", () => {
     await page.getByLabel(/Child's date of birth/).fill("2023-06-10");
     await page.getByLabel(/Program of interest/).selectOption("preschool");
     await page.getByLabel(/Preferred date and time/).fill("2030-04-02T10:00");
-    await page.getByLabel(/I agree that Al-Baseerah Academy may contact me/).check();
+    await page.getByLabel(/I agree that Midad Academy may contact me/).check();
 
     // The anti-spam token requires a few seconds between render and submit.
     await page.waitForTimeout(3200);
@@ -46,7 +46,7 @@ test.describe("Schedule a Tour", () => {
     await page.getByLabel(/Child's date of birth/).fill("2023-06-10");
     await page.getByLabel(/Program of interest/).selectOption("not-sure");
     await page.getByLabel(/Preferred date and time/).fill("2030-04-02T10:00");
-    await page.getByLabel(/I agree that Al-Baseerah Academy may contact me/).check();
+    await page.getByLabel(/I agree that Midad Academy may contact me/).check();
     await page.getByRole("button", { name: "Schedule a Tour" }).click();
     await expect(page.locator(".form-summary[role=\"alert\"]")).toContainText("We could not send your request just now");
   });
@@ -63,7 +63,7 @@ test.describe("Request Information", () => {
 
     await page.getByLabel(/Parent or guardian name/).fill("Amina Rahman");
     await page.getByLabel(/^Email/).fill("amina@example.com");
-    await page.getByLabel(/I agree that Al-Baseerah Academy may contact me/).check();
+    await page.getByLabel(/I agree that Midad Academy may contact me/).check();
     await page.waitForTimeout(3200);
     await page.getByRole("button", { name: "Request Information" }).click();
     await expect(page.getByRole("status")).toContainText("Your request has been received");

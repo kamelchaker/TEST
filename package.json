@@ -1,8 +1,8 @@
 {
-  "name": "al-baseerah-academy",
+  "name": "midad-academy",
   "version": "0.1.0",
   "private": true,
-  "description": "Al-Baseerah Academy public website",
+  "description": "Midad Academy public website",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

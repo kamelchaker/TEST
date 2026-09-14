@@ -11,7 +11,7 @@ interface CtaBandProps {
 }
 
 export const VISIT_BODY =
-  "Visit Al-Baseerah, explore the learning environment, and learn more about the program from our team.";
+  "Visit Midad, explore the learning environment, and learn more about the program from our team.";
 
 /** The shared "Schedule a Tour / Request Information" call to action. */
 export function CtaBand({ heading, body, surface = "green", bodyMaxWidth = "56ch" }: CtaBandProps) {

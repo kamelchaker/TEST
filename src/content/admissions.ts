@@ -4,12 +4,12 @@ export const admissionsContent: AdmissionsContent = {
   journey: [
     { label: "Discover", body: "Read the curriculum and program pages", current: false },
     { label: "Explore programs", body: "Find the right fit by date of birth", current: false },
-    { label: "Schedule a tour", body: "Visit Al-Baseerah and learn more about the program from our team", current: true },
+    { label: "Schedule a tour", body: "Visit Midad and learn more about the program from our team", current: true },
     { label: "Apply", body: "Submit the application for your program", current: false },
     { label: "Enroll", body: "Confirm placement and complete enrollment", current: false },
   ],
   applySteps: [
-    { title: "Schedule a tour", body: "Visit Al-Baseerah, explore the learning environment, and learn more about the program from our team." },
+    { title: "Schedule a tour", body: "Visit Midad, explore the learning environment, and learn more about the program from our team." },
     { title: "Submit the application", body: "Child's details, program of interest and preferred start. Application fee, where applicable." },
     { title: "Placement & offer", body: "We confirm eligibility against the cutoff for the academic year and offer a place, or a position on the waitlist." },
     { title: "Enroll", body: "Enrollment agreement, health and emergency forms, and any extended learning add-ons. Handled privately after the offer, never on this site." },

@@ -35,6 +35,9 @@ export function SiteFooter() {
         <p className="meta-text">
           {settings.name} · {settings.tagline}
         </p>
+        {settings.parentOrganization ? (
+          <p className="meta-text">Part of {settings.parentOrganization.name}</p>
+        ) : null}
         <p className="meta-text">{settings.descriptor}</p>
       </div>
     </footer>
