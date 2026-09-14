@@ -203,8 +203,10 @@ export interface FooterColumn {
 export interface SiteSettings {
   name: string;
   shortName: string;
-  /** Organisation the school belongs to, shown in the footer and structured data. */
+  /** Organisation the school belongs to, used in structured data. */
   parentOrganization: { name: string; url: string | null } | null;
+  /** Endorsement line from the brand system, shown in the footer. */
+  endorsementLine: string | null;
   tagline: string;
   descriptor: string;
   strapline: string;

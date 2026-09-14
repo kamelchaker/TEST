@@ -14,6 +14,16 @@ export const figtree = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
+/** Amiri carries the Arabic name in the stacked lockup. */
+export const amiri = localFont({
+  src: [{ path: "../../public/fonts/amiri-arabic.woff2", style: "normal" }],
+  weight: "400",
+  display: "swap",
+  variable: "--font-amiri",
+  fallback: ["serif"],
+  preload: false,
+});
+
 export const sourceSerif = localFont({
   src: [
     { path: "../../public/fonts/source-serif-4-latin.woff2", style: "normal" },

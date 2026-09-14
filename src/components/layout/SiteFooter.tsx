@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { logos } from "@/content/photography";
+import { StackedLockup } from "@/components/brand/MidadLockup";
 import { getSiteSettings } from "@/lib/cms";
 
 export function SiteFooter() {
@@ -25,19 +24,19 @@ export function SiteFooter() {
       </div>
       <div className="wrap border-t border-line pt-5 pb-5" aria-hidden="true" />
       <div className="wrap border-t border-line pt-5 pb-6 flex flex-wrap gap-4 items-center justify-between">
-        <Image
-          src={logos.full.src}
-          alt={logos.full.alt}
-          width={132}
-          height={152}
-          className="w-[132px] h-[152px] object-contain"
+        <StackedLockup
+          markSize={64}
+          surface="#faf7f1"
+          descriptor="short"
+          label={settings.name}
+          style={{ "--lockup-wordmark": "22px", "--lockup-descriptor": "10px" } as React.CSSProperties}
         />
-        <p className="meta-text">
-          {settings.name} · {settings.tagline}
-        </p>
-        {settings.parentOrganization ? (
-          <p className="meta-text">Part of {settings.parentOrganization.name}</p>
-        ) : null}
+        <div className="flex flex-col gap-1">
+          <p className="meta-text">
+            {settings.name} · {settings.tagline}
+          </p>
+          {settings.endorsementLine ? <p className="meta-text">{settings.endorsementLine}</p> : null}
+        </div>
         <p className="meta-text">{settings.descriptor}</p>
       </div>
     </footer>

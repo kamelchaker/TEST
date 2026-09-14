@@ -5,7 +5,7 @@ import { SHELL_ID, SiteHeader } from "@/components/layout/SiteHeader";
 import { StickyCta } from "@/components/layout/StickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getSiteSettings } from "@/lib/cms";
-import { figtree, sourceSerif } from "@/lib/fonts";
+import { amiri, figtree, sourceSerif } from "@/lib/fonts";
 import { siteUrl } from "@/lib/seo";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
@@ -22,7 +22,15 @@ export const metadata: Metadata = {
     "Nurturing, engaging education for children ages 2–6 — strong academics and Islamic learning together.",
   applicationName: settings.name,
   robots: { index: true, follow: true },
-  icons: { icon: "/images/logocrest.png", apple: "/images/logocrest.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export const viewport: Viewport = {
@@ -33,7 +41,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={settings.locale} className={`${figtree.variable} ${sourceSerif.variable}`}>
+    <html lang={settings.locale} className={`${figtree.variable} ${sourceSerif.variable} ${amiri.variable}`}>
       <body>
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />

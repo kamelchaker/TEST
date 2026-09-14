@@ -6,8 +6,8 @@ import type { ImageKey, Photo } from "./types";
  *
  * The scene images under /images/temporary are temporary visual assets that
  * preserve the approved design. They are not photographs of Midad Academy
- * and are never described as such. The two logo files are the crest of
- * Al-Baseerah Academy, of which Midad Academy is part.
+ * and are never described as such. The Midad mark itself is inline SVG in
+ * src/components/brand.
  */
 const T = "/images/temporary";
 
@@ -99,11 +99,6 @@ const positions: Record<ImageKey, { source: SourceKey; position?: string }> = {
 };
 
 /** Returns the photo for a design position, or null when none is mapped. */
-export const logos = {
-  crest: { src: "/images/logocrest.png", width: 512, height: 512, alt: "Al-Baseerah Academy" },
-  full: { src: "/images/logofull.png", width: 600, height: 691, alt: "Al-Baseerah Academy" },
-} as const;
-
 export function getPhoto(key: ImageKey | null | undefined): Photo | null {
   if (!key) return null;
   const entry = positions[key];

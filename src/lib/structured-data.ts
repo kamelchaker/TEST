@@ -15,7 +15,7 @@ export function organizationJsonLd(): Record<string, unknown> {
     "@id": absoluteUrl("/#organization"),
     name: settings.name,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/images/logofull.png"),
+    logo: absoluteUrl("/icon-512.png"),
     slogan: settings.tagline,
   };
   if (campus?.addressLines.length) {

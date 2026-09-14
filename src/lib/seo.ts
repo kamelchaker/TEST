@@ -34,10 +34,10 @@ export function buildMetadata({ title, description, path, bareTitle }: PageMeta)
       description,
       url,
       locale: "en_US",
-      images: [{ url: absoluteUrl("/images/logofull.png"), width: 600, height: 691, alt: settings.name }],
+      images: [{ url: absoluteUrl("/og-image.png"), width: 1200, height: 630, alt: settings.name }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: fullTitle,
       description,
     },

@@ -18,11 +18,13 @@
   --color-meta: #6b716c;
   --color-stone: #f2efe8;
   --color-line: rgba(32, 33, 31, 0.12);
+  --color-navy: #15294a;
   --color-on-green-muted: #cdd9cf;
   --color-on-green-kicker: #e4d3b8;
 
   --font-sans: var(--font-figtree), system-ui, sans-serif;
   --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-arabic: var(--font-amiri), "Amiri", serif;
 
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
@@ -382,6 +384,52 @@
   }
   .data-table td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--color-line); }
 
+  /* Brand lockups (Midad logo system). Sizes come from custom properties. */
+  .lockup {
+    --lockup-gap: 10px;
+    --lockup-wordmark: 17px;
+    --lockup-descriptor: 10px;
+    --lockup-rule-gap: 3px;
+    display: inline-flex;
+    text-decoration: none;
+    color: var(--color-navy);
+  }
+  .lockup-horizontal { align-items: center; gap: var(--lockup-gap); }
+  .lockup-horizontal .lockup-text { display: flex; flex-direction: column; align-items: flex-start; }
+  .lockup-mark { flex: none; display: block; }
+  .lockup-wordmark {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: var(--lockup-wordmark);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    color: var(--color-navy);
+    white-space: nowrap;
+  }
+  .lockup-rule { display: block; align-self: stretch; height: 1.5px; background: var(--color-terra); margin-block: var(--lockup-rule-gap); }
+  .lockup-descriptor {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--lockup-descriptor);
+    line-height: 1.2;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-terra);
+    white-space: nowrap;
+  }
+  .lockup-stacked { flex-direction: column; align-items: center; text-align: center; gap: 0; }
+  .lockup-stacked .lockup-mark { margin-bottom: calc(var(--lockup-wordmark) * 0.55); }
+  .lockup-stacked .lockup-arabic {
+    font-family: var(--font-arabic);
+    font-weight: 400;
+    font-size: calc(var(--lockup-wordmark) * 0.9);
+    line-height: 1.25;
+    color: var(--color-navy);
+    margin-top: calc(var(--lockup-wordmark) * 0.2);
+  }
+  .lockup-stacked .lockup-rule { margin-block: calc(var(--lockup-wordmark) * 0.5) calc(var(--lockup-wordmark) * 0.45); }
+  .lockup-descriptor-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.6em; }
+
   /* Header and navigation */
   .site-header {
     position: sticky;
@@ -391,18 +439,19 @@
     backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--color-line);
   }
-  .brand-name { font-family: var(--font-serif); font-weight: 600; font-size: 17px; color: var(--color-green); display: block; line-height: normal; }
-  .brand-tagline {
-    display: none;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 10px;
-    line-height: normal;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-terra);
+  /* The header lockup keeps the approved 17px / 10px brand sizes and hides
+     the descriptor below 768px, matching the approved header. */
+  .header-lockup .lockup-rule,
+  .header-lockup .lockup-descriptor { display: none; }
+  @media (min-width: 768px) {
+    .header-lockup .lockup-rule,
+    .header-lockup .lockup-descriptor-full { display: block; }
   }
-  @media (min-width: 768px) { .brand-tagline { display: block; } }
+  /* With the full navigation visible, the short form keeps the row on one line. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .header-lockup .lockup-descriptor-full { display: none; }
+    .header-lockup .lockup-descriptor-short { display: block; }
+  }
   .nav-link {
     position: relative;
     display: inline-flex;

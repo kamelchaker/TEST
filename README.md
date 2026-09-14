@@ -46,7 +46,7 @@ src/lib/cms/             Content resolution and visibility rules (single entry p
 src/lib/finder/          Framework-independent eligibility logic + tests
 src/lib/forms/           Zod schemas, server actions, spam controls, rate limiting, adapters
 src/lib/seo.ts           Metadata builder; src/lib/structured-data.ts for schema.org
-public/images/           Logo artwork; /temporary holds stand-in scene imagery
+public/images/temporary  Stand-in scene imagery; brand marks are inline SVG under src/components/brand
 tests/e2e/               Playwright suites; tests/unit for component tests
 ```
 
@@ -60,6 +60,7 @@ All content lives in `src/content` and is read only through `src/lib/cms`. Value
 - **Tuition** — `src/content/tuition.ts`; figures appear only when `approved` is true and rows exist.
 - **Campus contact details** — `src/content/campuses.ts`; address, phone and email render on `/contact` and in structured data once supplied.
 - **Faculty** — `src/content/faculty.ts`; the type exists and the resolver returns approved profiles, but no section is rendered until profiles are supplied.
+- **Logo** — the Midad mark and lockups live in `src/components/brand` as inline SVG taken from the Midad logo handoff, so the keyhole always inherits its surface colour. Favicons (`favicon.svg`, `favicon-32.png`, `favicon-64.png`, `icon-512.png`), the app tile (`apple-touch-icon.png`) and the Open Graph image (`og-image.png`) in `public/` are generated from the same path data.
 - **Photography** — `src/content/photography.ts` maps each design position (for example `preschoolHero`, `curriculumQuran`) to a file, size and objective alt text. Replace the file behind a key to change the image everywhere it is used without touching layouts. Files under `public/images/temporary` are stand-in visuals, not photographs of Midad Academy.
 
 ## Program Finder
