@@ -15,13 +15,18 @@ const MIN_ELAPSED_MS = 3_000;
 const MAX_AGE_MS = 24 * 60 * 60 * 1_000;
 
 let ephemeralSecret: Buffer | null = null;
+let warned = false;
 
 function secret(): Buffer {
   const configured = process.env.FORM_TOKEN_SECRET;
   if (configured && configured.length >= 16) return Buffer.from(configured, "utf8");
   // Local development only: a per-process secret means tokens do not survive a
-  // restart and are not shared across instances. Set FORM_TOKEN_SECRET in
-  // production.
+  // restart and are not shared across instances or Worker isolates. Set
+  // FORM_TOKEN_SECRET in production or submissions will be rejected.
+  if (process.env.NODE_ENV === "production" && !warned) {
+    warned = true;
+    console.error("[forms] FORM_TOKEN_SECRET is not set; form submissions will fail across instances.");
+  }
   ephemeralSecret ??= randomBytes(32);
   return ephemeralSecret;
 }

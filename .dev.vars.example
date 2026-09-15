@@ -1,0 +1,3 @@
+# Local Cloudflare preview secrets (copy to .dev.vars, which is git-ignored).
+RESEND_API_KEY=
+FORM_TOKEN_SECRET=replace-with-a-long-random-string

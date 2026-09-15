@@ -85,6 +85,19 @@ Email delivery through Resend is built in. Set `EMAIL_ADAPTER=resend`, `RESEND_A
 
 Environment variables are listed in `.env.example`. Set `FORM_TOKEN_SECRET` and `NEXT_PUBLIC_SITE_URL` in production; the in-memory rate limiter should be replaced with a shared store when running more than one instance.
 
+## Deploying to Cloudflare
+
+The site runs on Cloudflare Workers through the OpenNext adapter (`@opennextjs/cloudflare`). Configuration lives in `wrangler.jsonc` and `open-next.config.ts`; prerendered pages are served from the Worker's static assets, so no R2 or KV resources are needed.
+
+One-time setup:
+
+1. `npx wrangler login`
+2. Set the secrets: `npx wrangler secret put RESEND_API_KEY` and `npx wrangler secret put FORM_TOKEN_SECRET` (any long random string; required, otherwise form tokens issued by one Worker isolate are rejected by another).
+3. Check the public values in `wrangler.jsonc` (`NEXT_PUBLIC_SITE_URL`, `EMAIL_FROM`, `ADMISSIONS_INBOX`) and the build-time `NEXT_PUBLIC_SITE_URL` in `.env.production`. `EMAIL_FROM` must use a domain verified in Resend.
+4. Enable Cloudflare Images transformations on the zone so `next/image` output is optimised; without it the original files are served.
+
+Then `npm run cf:deploy` builds and deploys. `npm run cf:preview` runs the built Worker locally on port 8787 using `.dev.vars` (copy `.dev.vars.example`). Add a custom domain to the Worker in the Cloudflare dashboard, and consider a WAF rate-limiting rule on `POST` requests to `/schedule-a-tour` and `/request-information`, since the in-process rate limiter does not share state between Worker isolates.
+
 ## Accessibility
 
 Skip link, landmark structure, one `h1` per route, visible focus, a modal mobile drawer (focus trap, Escape, focus restoration, inert background, scroll lock), keyboard-operable curriculum tabs and FAQ disclosures, labelled form fields with linked error messages and a focused error summary, `prefers-reduced-motion` support and 44×44 targets. Use `ArabicText` (`src/components/ArabicText.tsx`) wherever genuine Arabic script is added so it carries `lang="ar"`.

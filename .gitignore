@@ -9,5 +9,9 @@ blob-report/
 .env.local
 .env.*.local
 *.tsbuildinfo
+.open-next/
+.wrangler/
+.dev.vars
+cloudflare-env.d.ts
 next-env.d.ts
 .DS_Store

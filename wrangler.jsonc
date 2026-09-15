@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "midad-academy",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      // Self-reference service binding required by OpenNext; the service name must match "name".
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "midad-academy"
+    }
+  ],
+  "images": {
+    // Cloudflare Images optimises next/image output; see https://opennext.js.org/cloudflare/howtos/image
+    "binding": "IMAGES"
+  },
+  "observability": { "enabled": true },
+  // Public, non-secret runtime settings. Secrets (RESEND_API_KEY, FORM_TOKEN_SECRET)
+  // are set with `wrangler secret put <NAME>` and never stored here.
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://midadacademy.org",
+    "EMAIL_ADAPTER": "resend",
+    "EMAIL_FROM": "Midad Academy <admissions@midadacademy.org>",
+    "ADMISSIONS_INBOX": "info@midadacademy.org",
+    "CRM_ADAPTER": "console"
+  }
+}
