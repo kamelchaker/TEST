@@ -38,11 +38,18 @@ describe("lockups", () => {
   });
 
   it("marks the Arabic name with lang and direction in the stacked lockup", () => {
-    render(<StackedLockup markSize={64} surface="#faf7f1" descriptor="short" label="Midad Academy" />);
+    render(<StackedLockup markSize={64} surface="#faf7f1" descriptor="short" label="Midad Academy" arabicName />);
     const arabic = screen.getByText("مداد");
     expect(arabic).toHaveAttribute("lang", "ar");
     expect(arabic).toHaveAttribute("dir", "rtl");
     expect(screen.getByRole("img", { name: "Midad Academy" })).toBeInTheDocument();
     expect(screen.getByText("Early Childhood & Elementary")).toBeInTheDocument();
+  });
+});
+
+describe("footer lockup", () => {
+  it("omits the Arabic name unless asked for", () => {
+    render(<StackedLockup markSize={64} surface="#faf7f1" descriptor="short" label="Midad Academy" />);
+    expect(screen.queryByText("مداد")).not.toBeInTheDocument();
   });
 });

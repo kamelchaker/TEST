@@ -70,16 +70,18 @@ export function HorizontalLockup({ markSize, surface, descriptor = "full", endor
 
 interface StackedLockupProps extends Omit<LockupProps, "descriptor"> {
   descriptor?: "full" | "short";
+  /** Adds the Arabic name as a peer line under the wordmark. */
+  arabicName?: boolean;
   /** Accessible name for the whole lockup when it stands alone. */
   label?: string;
 }
 
-export function StackedLockup({ markSize, surface, descriptor = "full", label, className, style }: StackedLockupProps) {
+export function StackedLockup({ markSize, surface, descriptor = "full", arabicName = false, label, className, style }: StackedLockupProps) {
   return (
     <span className={cx("lockup lockup-stacked", className)} style={style} role={label ? "img" : undefined} aria-label={label}>
       <MidadMark size={markSize} surface={surface} className="lockup-mark" />
       <span className="lockup-wordmark">Midad Academy</span>
-      <ArabicText className="lockup-arabic">{ARABIC_NAME}</ArabicText>
+      {arabicName ? <ArabicText className="lockup-arabic">{ARABIC_NAME}</ArabicText> : null}
       <span className="lockup-rule" aria-hidden="true" />
       {descriptor === "full" ? (
         // A 1fr auto 1fr grid pins the middle dot to the lockup's vertical axis.
