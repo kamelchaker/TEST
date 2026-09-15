@@ -93,10 +93,10 @@ const positions: Record<ImageKey, { source: SourceKey; position?: string }> = {
   extendedLearningCard: { source: "physical" },
   ourApproachTeacher: { source: "stem" },
   familiesHero: { source: "physical" },
-  aboutHero: { source: "campus" },
-  admissionsHero: { source: "campus" },
+  aboutHero: { source: "tourScene" },
+  admissionsHero: { source: "tourScene" },
   tourHero: { source: "tourScene" },
-  contactCampus: { source: "campus" },
+  contactCampus: { source: "tourScene" },
 };
 
 /** Returns the photo for a design position, or null when none is mapped. */
