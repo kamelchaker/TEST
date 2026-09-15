@@ -32,14 +32,17 @@ interface LockupProps {
   descriptor?: "full" | "short" | "none" | "responsive";
   /** Adds the endorsement line beneath the descriptor, with its short rule. */
   endorsement?: boolean;
+  /** A second, smaller mark that CSS can swap in on narrow screens. */
+  compactMarkSize?: number;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export function HorizontalLockup({ markSize, surface, descriptor = "full", endorsement, className, style }: LockupProps) {
+export function HorizontalLockup({ markSize, surface, descriptor = "full", endorsement, compactMarkSize, className, style }: LockupProps) {
   return (
     <span className={cx("lockup lockup-horizontal", className)} style={style}>
       <MidadMark size={markSize} surface={surface} className="lockup-mark" />
+      {compactMarkSize ? <MidadMark size={compactMarkSize} surface={surface} className="lockup-mark lockup-mark-compact" /> : null}
       <span className="lockup-text">
         <span className="lockup-wordmark">Midad Academy</span>
         {descriptor === "none" ? null : (

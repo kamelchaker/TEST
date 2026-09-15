@@ -458,15 +458,27 @@
     backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--color-line);
   }
-  /* The header lockup keeps the approved 17px / 10px brand sizes and hides
-     the descriptor below 768px, matching the approved header. */
-  .header-lockup .lockup-rule,
-  .header-lockup .lockup-descriptor,
-  .header-lockup .lockup-endorsement { display: none; }
+  /* The header lockup keeps the approved 17px / 10px brand sizes from 768px.
+     Below that it shows the sanctioned short descriptor at a reduced size with
+     the smaller mark, so all three lines fit beside the menu button. */
+  .lockup-mark-compact { display: none; }
+  .header-lockup .lockup-descriptor-full { display: none; }
+  @media (max-width: 767px) {
+    .header-lockup {
+      --lockup-gap: 8px;
+      --lockup-descriptor: 8.5px;
+      --lockup-endorsement: 7.5px;
+      --lockup-endorsement-rule: 16px;
+      --lockup-endorsement-gap: 3px;
+    }
+    .header-lockup .lockup-mark { display: none; }
+    .header-lockup .lockup-mark-compact { display: block; }
+    .header-lockup .lockup-descriptor { letter-spacing: 0.18em; }
+    .header-lockup .lockup-endorsement { letter-spacing: 0.16em; gap: 6px; }
+  }
   @media (min-width: 768px) {
-    .header-lockup .lockup-rule,
     .header-lockup .lockup-descriptor-full { display: block; }
-    .header-lockup .lockup-endorsement { display: flex; }
+    .header-lockup .lockup-descriptor-short { display: none; }
   }
   /* With the full navigation visible, the short form keeps the row on one line. */
   @media (min-width: 1024px) and (max-width: 1279px) {
