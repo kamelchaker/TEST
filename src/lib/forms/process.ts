@@ -80,7 +80,14 @@ export async function processSubmission<S extends z.ZodTypeAny>(options: Process
     userAgent: request.userAgent,
   });
 
-  const { crm, email } = getAdapters();
+  let adapters: ReturnType<typeof getAdapters>;
+  try {
+    adapters = getAdapters();
+  } catch (error) {
+    console.error("[forms] delivery is not configured", error instanceof Error ? error.message : error);
+    return fail(GENERIC_ERROR);
+  }
+  const { crm, email } = adapters;
   try {
     await crm.createLead(lead);
   } catch (error) {

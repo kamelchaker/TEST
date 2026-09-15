@@ -79,7 +79,9 @@ Two public forms exist: Schedule a Tour and Request Information. Contact is not 
 
 Server actions in `src/lib/forms/actions.ts` run the shared pipeline in `process.ts`: unexpected-field rejection → honeypot → Zod validation (authoritative) → signed timing token → rate limit → CRM and email adapters. Consent is required and recorded with the statement text and timestamp. The child's date of birth is validated and kept server-side as a date string only.
 
-Adapters (`src/lib/forms/adapters`) let the app run without live credentials. `CRM_ADAPTER` and `EMAIL_ADAPTER` default to `console`, which logs a redacted summary. Implement `CrmAdapter` / `EmailAdapter` and register the implementation in `adapters/index.ts` to connect a real system.
+Adapters (`src/lib/forms/adapters`) let the app run without live credentials. `CRM_ADAPTER` and `EMAIL_ADAPTER` default to `console`, which logs a redacted summary.
+
+Email delivery through Resend is built in. Set `EMAIL_ADAPTER=resend`, `RESEND_API_KEY`, and `EMAIL_FROM` (a sender on a domain verified in Resend). Each submission is emailed to the admissions inbox, `info@midadacademy.org` by default or `ADMISSIONS_INBOX` when set, with the family's address as reply-to. Implement `CrmAdapter` / `EmailAdapter` and register it in `adapters/index.ts` to connect another system.
 
 Environment variables are listed in `.env.example`. Set `FORM_TOKEN_SECRET` and `NEXT_PUBLIC_SITE_URL` in production; the in-memory rate limiter should be replaced with a shared store when running more than one instance.
 
