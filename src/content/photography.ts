@@ -37,6 +37,7 @@ const sources = {
   physical: { src: `${T}/physical.webp`, width: 1000, height: 327, alt: "Children playing outdoors" },
   creativeArts: { src: `${T}/creativearts.webp`, width: 900, height: 361, alt: "Children painting and making at an art table" },
   campus: { src: `${T}/campus.webp`, width: 900, height: 379, alt: "Exterior view of a school building and entrance" },
+  tourScene: { src: `${T}/tour.webp`, width: 1408, height: 768, alt: "Children in a classroom exploring a world map and a model building with a teacher nearby" },
 } satisfies Record<string, SourceImage>;
 
 type SourceKey = keyof typeof sources;
@@ -94,7 +95,7 @@ const positions: Record<ImageKey, { source: SourceKey; position?: string }> = {
   familiesHero: { source: "physical" },
   aboutHero: { source: "campus" },
   admissionsHero: { source: "campus" },
-  tourHero: { source: "campus" },
+  tourHero: { source: "tourScene" },
   contactCampus: { source: "campus" },
 };
 
