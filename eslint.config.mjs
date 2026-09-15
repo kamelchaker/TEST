@@ -15,6 +15,8 @@ export default defineConfig([
   },
   globalIgnores([
     ".next/**",
+    ".open-next/**",
+    ".wrangler/**",
     "out/**",
     "node_modules/**",
     "playwright-report/**",
